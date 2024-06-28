@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>Customer Registration Form</title>
+    <style>
+        .error{color:red}
+    </style>
+</head>
+<body>
+<i>Fields marked with (*) Symbol are required to be filled!!!</i>
+<br><br>
+<form th:action="@{/processForm}" th:object="${customer}" method="post">
+    First name(*) : <input type="text" th:field="*{firstName}"/>
+    <span th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}" class="error"></span>
+    <br><br>
+    Last name(*) : <input type="text" th:field="*{lastName}"/>
+    <span th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}" class="error"></span>
+    <br><br>
+    Age(*) : <input type="text" th:field="*{age}" />
+    <span th:if="${#fields.hasErrors('age')}" th:errors="*{age}" class="error"></span>
+    <br><br>
+    Postal Code(*) : <input type="text" th:field="*{postalCode}" />
+    <span th:if="${#fields.hasErrors('postalCode')}" th:errors="*{postalCode}" class="error"></span>
+    <br><br>
+    IFSC Code(*) : <input type="text" th:field="*{IFSCCode}" />
+    <span th:if="${#fields.hasErrors('IFSCCode')}" th:errors="*{IFSCCode}" class="error"></span>
+    <input type="submit" value="submit">
+</form>
+
+</body>
+</html>
